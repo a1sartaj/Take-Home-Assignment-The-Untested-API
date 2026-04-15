@@ -102,6 +102,13 @@ Body: { "assignee": "string" }
 
 Write tests for the new endpoint before or alongside the implementation.
 
+## About New End Points Details
+- First I create a routes `/tasks/:id/assignee`.
+- Second I create assigneeValidator in validator for checking assignee is not null, not-empty string.
+- Third I create a assignTask Services with id and assignee props.
+- In AssignTask I add assignee in task and return.
+
+
 **Deliverable:** Bug report, fix, and new endpoint with tests.
 
 ---

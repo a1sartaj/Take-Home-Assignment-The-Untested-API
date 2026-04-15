@@ -18,7 +18,10 @@ const getStats = () => {
   const counts = { todo: 0, in_progress: 0, done: 0 };
   let overdue = 0;
 
+  if(!tasks) return null
+
   tasks.forEach((t) => {
+
     if (counts[t.status] !== undefined) counts[t.status]++;
     if (t.dueDate && t.status !== 'done' && new Date(t.dueDate) < now) {
       overdue++;
@@ -76,9 +79,22 @@ const completeTask = (id) => {
   return updated;
 };
 
+
+const assignTask = (id, assignee) => {
+  const task = findById(id);
+  if (!task) return null;
+
+  task.assignee = assignee;
+
+  return task;
+
+}
+
+
 const _reset = () => {
   tasks = [];
 };
+
 
 module.exports = {
   getAll,
@@ -91,4 +107,5 @@ module.exports = {
   remove,
   completeTask,
   _reset,
+  assignTask,
 };
